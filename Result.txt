@@ -1,0 +1,35 @@
+D=1000, rep=10
+`clang++ --std=c++17 -DNDEBUG -o RM_hemm_MKL.out RM_hemm_MKL.cpp -m64 -I${MKLROOT}/include -L${MKLROOT}/lib -lmkl_intel_lp64 -lmkl_core -lmkl_intel_thread -liomp5 -ldl -lpthread -lm`
+RM_hemm_MKL(OMP_NUM_THREADS=4, Mac mini)
+  Tcstr = 1.42351 sec, Tdiag = 1.60138 sec, total 3.489
+
+D=2000, rep=10
+RM_hemm_MKL(OMP_NUM_THREADS=1, Mac mini)
+  Tcstr = 5.07272 sec, Tdiag = 36.52 sec, total 41.999
+RM_hemm_MKL(OMP_NUM_THREADS=4, Mac mini)
+  Tcstr = 5.24404 sec, Tdiag = 15.5437 sec, total 21.099
+RM_hemm_MKL(OMP_NUM_THREADS=8, Mac mini)
+  Tcstr = 5.48848 sec, Tdiag = 15.8702 sec, total 21.676
+
+`icpc -DNDEBUG -o RM_hemm_MKL.out RM_hemm_MKL.cpp -qopenmp -I${MKLROOT}/include -L${MKLROOT}/lib -lmkl_intel_lp64 -lmkl_core -lmkl_intel_thread -lpthread -lm`
+RM_hemm_MKL(OMP_NUM_THREADS=1, Mac mini)
+  Tcstr = 1.21818 sec, Tdiag = 35.2064 sec, total 36.771
+RM_hemm_MKL(OMP_NUM_THREADS=4, Mac mini)
+  Tcstr = 1.5539  sec, Tdiag = 15.8908 sec, total 17.544
+RM_hemm_MKL(OMP_NUM_THREADS=8, Mac mini)
+  Tcstr = 1.54383 sec, Tdiag = 15.7386 `sec, total 17.375
+
+D=5000, rep=10
+RM_hemm_MKL(OMP_NUM_THREADS=8, Mac mini)
+  Tcstr= 35.7159 sec, Tdiag= 254.986 sec, total 4:52.72
+RM_hemm_MKL(OMP_NUM_THREADS=1, Mac mini)
+  Tcstr= 34.0356 sec, Tdiag= 535.602 sec, total 9:31.41
+RM_hemm(OMP_NUM_THREADS=1, Mac mini)
+  Tcstr = 33.0694 sec, Tdiag = 2303.95 sec, total 38:59.14 total
+
+RM_hemm_MKL(OMP_NUM_THREADS=8, cat1)
+  Tcstr= 28.8743 sec, Tdiag= 110.54  sec, total 2:19.93
+RM_hemm_MKL(OMP_NUM_THREADS=1, cat1)
+  Tcstr= 28.2797 sec, Tdiag= 473.991 sec, total 8:22.77
+RM_hemm(OMP_NUM_THREADS=1, cat1)
+  Tcstr= 30.7936 sec, Tdiag= 543.569 sec, total 9:34.88
