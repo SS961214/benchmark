@@ -1,1 +1,0 @@
-clang++ --std=c++17 -DNDEBUG -o RM_hemm_MKL.out RM_hemm_MKL.cpp -m64 -I${MKLROOT}/include -L${MKLROOT}/lib -lmkl_intel_lp64 -lmkl_core -lmkl_intel_thread -liomp5 -ldl -lpthread -lm
